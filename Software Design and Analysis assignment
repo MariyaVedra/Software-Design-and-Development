@@ -1,0 +1,114 @@
+ char player = 'X';
+            char[,] Board = new char[3, 3];
+            Initialize(Board);
+            int movesPlayed = 0;
+            //The game plays, until winner/loser/draw
+            while (true)
+            {
+
+                Console.Clear();
+                Print(Board);
+                Console.Write("Please enter row:");
+                int row = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Please enter column:");
+                int col = Convert.ToInt32(Console.ReadLine());
+                Board[row, col] = player;
+                //Check if we won
+                if (player == Board[0,0] && player == Board [0,1] && player == Board[0,2] )
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[1, 0] && player == Board[1, 1] && player == Board[1, 2])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[2, 0] && player == Board[2, 1] && player == Board[2, 2])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[0, 0] && player == Board[1, 0] && player == Board[2, 0])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[0, 1] && player == Board[1, 1] && player == Board[2, 1])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[0, 2] && player == Board[1, 2] && player == Board[2, 2])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[0, 0] && player == Board[1, 1] && player == Board[2, 2])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+                if (player == Board[0, 2] && player == Board[1, 1] && player == Board[2, 1])
+                {
+                    Console.WriteLine(player + " has won the game!");
+                    break;
+                }
+
+                movesPlayed = movesPlayed + 1;
+                if (movesPlayed == 9)
+                {
+                    Console.WriteLine("DRAW");
+                    break;
+                        
+                }
+                player = ChangeTurn(player);
+
+                
+            }
+            
+             //Congrats to the winner
+             //Clear the Screen
+             //Print the Board.
+             //Mention who won or if it was a draw
+
+
+
+        }
+        static char ChangeTurn(char currentplayer)
+        {
+            if (currentplayer == 'X')
+            {
+                return 'O';
+            }
+            else
+            {
+                return 'O';
+            }
+        }
+        static void Initialize(char[,] board)
+        {
+            char[,] Board = new char[3, 3];
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    Board[row, col] = ' ';
+                }
+
+            }
+        }
+
+        static void Print(char[,] board)
+        {
+            Console.WriteLine("   0 1 2  ");
+            for (int row = 0; row < 3; row++)
+            {
+                Console.Write(row + " | ");
+                for (int col = 0; col < 3; col++)
+                {
+                    Console.Write(board[row, col]);
+                    Console.Write("| ");
+                }
+                Console.WriteLine();
+            }
